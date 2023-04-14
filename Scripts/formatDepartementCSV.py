@@ -1,7 +1,6 @@
 import csv
 
 originalFilename = "originalCSVFiles/v_departement_2023.csv"
-
 filename = "newCSVFiles/new_dept.csv"
 
 def readDeptCsv():

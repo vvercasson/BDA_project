@@ -2,7 +2,6 @@ from io import StringIO
 import psycopg2
 import psycopg2.extras
 import getpass
-import sys
 
 # FILENAMES
 communesFilename = open('newCSVFiles/new_communes.csv', 'r')
@@ -18,22 +17,21 @@ communeTable = 'commune'
 clDeptTable = 'cldept'
 clRegTable = 'clreg'
 
-# Try to connect to an existing database
-print('Connexion à la base de données...')
+# Connection to my database
+print('Logging to the databse...')
 USERNAME="vvercasson"
 PASS= getpass.getpass('Password for '+ USERNAME + ':')
 
 try:
    conn = psycopg2.connect("host=pgsql dbname="+ USERNAME+" user="+ USERNAME+ " password="+PASS)
 except Exception as e :
-   exit("Connexion impossible à la base de données: " + str(e))
+   exit("Connection failed to the database : " + str(e))
 
-print('Connecté à la base de données')
+print('Successfull connection')
 
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-# ------------------------ #
-
+# Copyign all my CSV files into the right table
 try:
     cur.copy_from(regionsFilename,regionTable,sep=',')
     cur.copy_from(departementFilename, deptTable, sep=',')
@@ -43,15 +41,13 @@ try:
 except Exception as e:
    cur.close()
    conn.close()
-   exit("Copy from echec : " + str(e))
+   exit("FAILURE --> Copy From : " + str(e))
 
+# Comitting the change
 conn.commit()
 
-print("Copy From was succesfull for Region table")
-
-# ------------------------ #
+print("The copies where done correctly.")
 
 # Disconnecting
-
 cur.close()
 conn.close()

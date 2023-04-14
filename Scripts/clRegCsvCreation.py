@@ -1,7 +1,6 @@
 import csv
 
 originalFilename = "originalCSVFiles/v_region_2023.csv"
-
 filename = "newCSVFiles/cl_reg.csv"
 
 def readRegCsv():
