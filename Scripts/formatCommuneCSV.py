@@ -13,6 +13,8 @@ def readCommuneCSV():
             if row[0] in {'COM','TYPECOM'}:
                 if len(row[3]) == 1:
                     row[3] = "0" + row[3]
+                if len(row[1]) < 5:
+                    row[1] = "0" + row[1]
                 newFile.write(",".join(row[1:]))
                 newFile.write('\n')
 readCommuneCSV()
