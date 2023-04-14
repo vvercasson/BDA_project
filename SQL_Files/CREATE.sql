@@ -7,7 +7,7 @@ CREATE TABLE REGION(
 );
 
 CREATE TABLE DEPARTEMENT(
-    CDept varchar(2) constraint cle_dept PRIMARY KEY,
+    CDept varchar(3) constraint cle_dept PRIMARY KEY,
     CReg integer,
     TNCC integer,
     NCC varchar(200) not null,
@@ -21,7 +21,7 @@ CREATE TABLE DEPARTEMENT(
 CREATE TABLE COMMUNE(
     CCom varchar(5) constraint cle_com PRIMARY KEY,
     CReg integer,
-    CDept varchar(2),
+    CDept varchar(3),
     TNCC integer,
     NCC varchar(200) not null,
     NCCENR varchar(200) not null,
@@ -36,7 +36,7 @@ CREATE TABLE COMMUNE(
 
 CREATE TABLE CLDEPT(
     CCom varchar(5),
-    CDept varchar(2),
+    CDept varchar(3),
     PRIMARY KEY(CCom, CDept),
     constraint fk_dept
         FOREIGN KEY(CDept)
