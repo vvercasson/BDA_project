@@ -13,11 +13,13 @@ def readStatCsv():
             spamreader = csv.reader(csvfileNotMayotte, delimiter=';')
             for row in spamreader:
                 newFile.write(';'.join(row))
+                newFile.write('\n')
 
         # MAYOTTE
             spamreader = csv.reader(csvfileMayotte, delimiter=';')
             next(spamreader)
             for row in spamreader:
                 newFile.write(';'.join(row))
+                newFile.write('\n')
 
 readStatCsv()

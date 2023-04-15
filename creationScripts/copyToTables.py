@@ -31,7 +31,7 @@ print('Successfull connection')
 
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-# Copyign all my CSV files into the right table
+# Copying all my CSV files into the right table
 try:
     cur.copy_from(regionsFilename,regionTable,sep=',')
     cur.copy_from(departementFilename, deptTable, sep=',')

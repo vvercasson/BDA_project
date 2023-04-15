@@ -1,7 +1,7 @@
 -- PARTIE STAT
 
 CREATE TABLE STATS(
-    idStat integer constraint cle_stat PRIMARY KEY,
+    idStat varchar(15) constraint cle_stat PRIMARY KEY,
     label varchar(30) constraint stat_label_non_null not null
 );
 
@@ -20,7 +20,7 @@ CREATE TABLE INTERVALLE(
 CREATE TABLE STATSCOMANNEE(
     idCom varchar(5),
     idAnnee integer,
-    idStat integer,
+    idStat varchar(15),
     valeur float,
     PRIMARY KEY(idCom, idAnnee, idStat),
     constraint fk_com
@@ -37,7 +37,7 @@ CREATE TABLE STATSCOMANNEE(
 CREATE TABLE STATSCOMINTER(
     idCom varchar(5),
     idInter integer,
-    idStat integer,
+    idStat varchar(15),
     valeur float,
     PRIMARY KEY(idCom, idInter, idStat),
     constraint fk_com
