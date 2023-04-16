@@ -11,10 +11,12 @@ CREATE TABLE ANNEE(
 );
 
 CREATE TABLE INTERVALLE(
-    idInter integer constraint cle_intervalle PRIMARY KEY,
+    idDebutInter integer,
+    idFinInter integer,
     debut integer not null,
     fin integer not null,
-    constraint debut_inf_fin CHECK (fin > debut)
+    constraint debut_inf_fin CHECK (fin > debut),
+    PRIMARY KEY (idDebutInter, idFinInter)
 );
 
 CREATE TABLE STATSCOMANNEE(
