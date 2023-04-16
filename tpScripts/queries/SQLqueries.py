@@ -108,8 +108,23 @@ def query4():
    print(output)
 
 
-# Running functions
-query3()
+# Invite
+print("\n\n")
+print("*** Pour les requêtes demandant un département ou une région, le nom doit être saisi en majuscule (exemple:ILE DE FRANCE) ***\n")
+print("1 - Lister les départements d'une région donnée")
+print("2 - Lister les communes de plus de X habitants d'un département donné")
+print("3 - La region la plus peuplée")
+print("4 - La region la moins peuplée")
+requestedQuery = input("Quelles requête voulez vous executer ? [Taper le numéro]\n")
+
+if requestedQuery == '1':
+   query1()
+elif requestedQuery == '2':
+   query2()
+elif requestedQuery == '3':
+   query3()
+elif requestedQuery == '4':
+   query4()
 
 #fermeture de la connexion
 cur.close()

@@ -46,7 +46,7 @@ Ce script prend le csv crée par le script précedent et vas venir enlever toute
 Ce script sert à créer les fichiers CSV suivants : **commAnneeStat.csv** et **commInterStat.csv**. Ce script de séparer nos stats entre celles qui utilisent une année et celles qui utilisent une intervalle afin de pouvour créer nos tables : **STATSCOMANNEE** et **STATSCOMINTER**
 
 ## 1.2 Scripts d'alimentation de base de données
-
+---
 ### 1.2.1 - **copyToTables.py**
 
 Ce scripts utiles nos les fichiers csv qui ont été crées au dessus par nos scripts de créations de CSV afin de pouvoir utiliser la fonction **copy_from(...)** de psycopg2.
@@ -54,6 +54,13 @@ Ce scripts utiles nos les fichiers csv qui ont été crées au dessus par nos sc
 ### 1.2.2 - **copyStatsToDb.py**
 
 Même principe que le copyToTable au dessus mais celui ci ne copie que les stats
+
+## 1.3 Scripts de requêtage
+---
+
+### 1.3.1 - **SQLqueries.py**
+
+Ce fichier répond à la partie 1 du TP sur les divers requête a faire
 
 # 2. Fichiers SQL
 
