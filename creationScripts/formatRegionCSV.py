@@ -1,3 +1,5 @@
+# File that creates the csv that will be used to copy from for our REGIONS
+
 import csv
 
 originalFilename = "originalCSVFiles/v_region_2023.csv"

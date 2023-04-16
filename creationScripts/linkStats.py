@@ -1,3 +1,5 @@
+# Links non-mayotte and mayotte stats
+
 import csv
 
 mayotteFilename = "originalCSVFiles/stats/stats_avec_mayotte.CSV"

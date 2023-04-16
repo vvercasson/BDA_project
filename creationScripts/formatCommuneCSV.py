@@ -1,3 +1,5 @@
+# File that creates the csv that will be used to copy from for our COMMUNES
+
 import csv
 
 originalFilename = "originalCSVFiles/v_commune_2023.csv"

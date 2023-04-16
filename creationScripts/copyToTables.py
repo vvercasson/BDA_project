@@ -1,3 +1,5 @@
+# File that copies our CSV files to our database for REG,DEPT,COM,CL_DEPT,CL_REG
+
 from io import StringIO
 import psycopg2
 import psycopg2.extras

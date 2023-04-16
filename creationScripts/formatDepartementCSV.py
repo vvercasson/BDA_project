@@ -1,3 +1,5 @@
+# File that creates the csv that will be used to copy from for our DEPARTEMENT
+
 import csv
 
 originalFilename = "originalCSVFiles/v_departement_2023.csv"

@@ -1,3 +1,5 @@
+# This file created the file "cl_reg.csv" which is the file required to use copy_from to insert in our CL_REG table
+
 import csv
 
 originalFilename = "originalCSVFiles/v_region_2023.csv"
