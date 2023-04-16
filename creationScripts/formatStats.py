@@ -7,8 +7,8 @@ stats = "newCSVFiles/statsRequired.csv"
 communes = "newCSVFiles/new_communes.csv"
 
 # CSV Outputs
-anneeStatsFilename = "newCSVFiles/commAnneeStat2.csv"
-interStatsFilename = "newCSVFiles/commInterStat2.csv"
+anneeStatsFilename = "newCSVFiles/commAnneeStat.csv"
+interStatsFilename = "newCSVFiles/commInterStat.csv"
 
 list = []
 

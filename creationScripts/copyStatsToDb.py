@@ -7,8 +7,8 @@ import getpass
 
 # FILENAMES
 stats = open('newCSVFiles/required_stats_table.csv', 'r')
-statsAnnee = open('newCSVFiles/commAnneeStat2.csv', 'r')
-statsInter = open('newCSVFiles/commInterStat2.csv', 'r')
+statsAnnee = open('newCSVFiles/commAnneeStat.csv', 'r')
+statsInter = open('newCSVFiles/commInterStat.csv', 'r')
 
 # TABLES NAME
 statsTable = 'stats'
