@@ -30,3 +30,7 @@ Même principe que le script au dessus mais pour le chef lieu d'une région.
 ### 1.2.1 **copyToTables.py**
 
 Ce scripts utiles nos les fichiers csv qui ont été crées au dessus par nos scripts de créations de CSV afin de pouvoir utiliser la fonction **copy_from(...)** de psycopg2.
+
+### 1.2.2 **copyStatsToDb.py**
+
+Même principe que le copyToTable au dessus mais celui ci ne copie que les stats
