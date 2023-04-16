@@ -55,6 +55,22 @@ Ce scripts utiles nos les fichiers csv qui ont été crées au dessus par nos sc
 
 Même principe que le copyToTable au dessus mais celui ci ne copie que les stats
 
-# Fichiers SQL
+# 2. Fichiers SQL
 
-## Vues
+## 2.1 Vues
+
+### 2.1.1 - **POPDEPT.sql**
+
+Création d'une vue qui renvoie toutes les stats concernant la population pour les départements.
+
+### 2.1.2 - **POPREG.sql**
+
+Même chose que le fichier **POPDEPT.sql** au dessus mais pour les régions.
+
+### 2.1.3 - **STATDEPT.sql**
+
+Dans ce fichier on crée une Vue qui renvoie toutes les stats pour chaque departement que ca soit une stat sur une intervalle ou sur une année précise.
+
+### 2.1.4 - **STATREG.sql**
+
+Même principe que **STATDEPT.sql**, on renvoie toutes les stats mais pour les regions cette fois-ci.
