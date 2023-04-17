@@ -1,0 +1,5 @@
+ALTER TABLE REGION
+ADD population_2019 float;
+
+ALTER TABLE DEPARTEMENT
+ADD population_2019 float;
