@@ -51,17 +51,13 @@ Ce script sert à créer les fichiers CSV suivants : **commAnneeStat.csv** et **
 
 Ce scripts utiles nos les fichiers csv qui ont été crées au dessus par nos scripts de créations de CSV afin de pouvoir utiliser la fonction **copy_from(...)** de psycopg2.
 
-### 1.2.2 - **copyStatsToDb.py**
-
-Même principe que le copyToTable au dessus mais celui ci ne copie que les stats
-
 ## 1.3 Scripts de requêtage
 ---
 
 ### 1.3.1 - **SQLqueries.py**
 
 Ce fichier répond à la partie 1 du TP sur les divers requête a faire.
-Les requêtes sont expliqués lors de l'éxecution
+Les requêtes sont expliqués lors de l'éxecution après s'être connecté.
 
 # 2. Fichiers SQL
 
@@ -90,4 +86,6 @@ Même principe que **STATDEPT.sql**, on renvoie toutes les stats mais pour les r
 ### 2.2.1 **DEPT_POP_PROC.sql** et **REG_POP_PROC.sql**
 
 Ces deux fichiers servent a créer les procédures qui vont ajouter à nos tables DEPARTEMENTS et REGION la population qu'ils avaient en 2019.
+
+## 2.3 Triggers
 

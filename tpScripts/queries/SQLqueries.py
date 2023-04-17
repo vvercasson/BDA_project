@@ -2,18 +2,9 @@ import psycopg2
 import psycopg2.extras
 import getpass
 import sys
+from connexionScript import *
 
-# Try to connect to an existing database
-print('Connexion à la base de données...')
-USERNAME="vvercasson"
-PASS= getpass.getpass('Password for '+ USERNAME + ':')
-
-try:
-   conn = psycopg2.connect("host=pgsql dbname="+ USERNAME+" user="+ USERNAME+ " password="+PASS)
-except Exception as e :
-   exit("Connexion impossible à la base de données: " + str(e))
-
-print('Connecté à la base de données')
+conn = connect()
 
 #préparation de l'exécution des requêtes (à ne faire qu'une fois)
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)

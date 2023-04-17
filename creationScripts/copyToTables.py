@@ -4,6 +4,7 @@ from io import StringIO
 import psycopg2
 import psycopg2.extras
 import getpass
+from connexionScript import *
 
 # FILENAMES
 communesFilename = open('newCSVFiles/new_communes.csv', 'r')
@@ -12,6 +13,11 @@ regionsFilename = open('newCSVFiles/new_regions.csv', 'r')
 clDeptFilename = open('newCSVFiles/cl_dept.csv', 'r')
 clRegFilename = open('newCSVFiles/cl_reg.csv', 'r')
 
+# STATS FILENAMES
+stats = open('newCSVFiles/required_stats_table.csv', 'r')
+statsAnnee = open('newCSVFiles/commAnneeStat.csv', 'r')
+statsInter = open('newCSVFiles/commInterStat.csv', 'r')
+
 # TABLES NAME
 regionTable = 'region'
 deptTable = 'departement'
@@ -19,15 +25,13 @@ communeTable = 'commune'
 clDeptTable = 'cldept'
 clRegTable = 'clreg'
 
-# Connection to my database
-print('Logging to the databse...')
-USERNAME="vvercasson"
-PASS= getpass.getpass('Password for '+ USERNAME + ':')
+# STATS TABLES NAME
+statsTable = 'stats'
+statsAnneeTable = 'statscomannee'
+statsInterTable = 'statscominter'
 
-try:
-   conn = psycopg2.connect("host=pgsql dbname="+ USERNAME+" user="+ USERNAME+ " password="+PASS)
-except Exception as e :
-   exit("Connection failed to the database : " + str(e))
+# Connection to my database
+conn = connect()
 
 print('Successfull connection')
 
@@ -40,6 +44,9 @@ try:
     cur.copy_from(communesFilename,communeTable,sep=',')
     cur.copy_from(clDeptFilename,clDeptTable, sep=',')
     cur.copy_from(clRegFilename, clRegTable, sep=',')
+    cur.copy_from(stats,statsTable,sep=',')
+    cur.copy_from(statsAnnee, statsAnneeTable, sep=',')
+    cur.copy_from(statsInter,statsInterTable,sep=',')
 except Exception as e:
    cur.close()
    conn.close()
