@@ -60,11 +60,13 @@ Même principe que le copyToTable au dessus mais celui ci ne copie que les stats
 
 ### 1.3.1 - **SQLqueries.py**
 
-Ce fichier répond à la partie 1 du TP sur les divers requête a faire
+Ce fichier répond à la partie 1 du TP sur les divers requête a faire.
+Les requêtes sont expliqués lors de l'éxecution
 
 # 2. Fichiers SQL
 
 ## 2.1 Vues
+---
 
 ### 2.1.1 - **POPDEPT.sql**
 
@@ -81,3 +83,11 @@ Dans ce fichier on crée une Vue qui renvoie toutes les stats pour chaque depart
 ### 2.1.4 - **STATREG.sql**
 
 Même principe que **STATDEPT.sql**, on renvoie toutes les stats mais pour les regions cette fois-ci.
+
+## 2.2 Prodécures
+---
+
+### 2.2.1 **DEPT_POP_PROC.sql** et **REG_POP_PROC.sql**
+
+Ces deux fichiers servent a créer les procédures qui vont ajouter à nos tables DEPARTEMENTS et REGION la population qu'ils avaient en 2019.
+
