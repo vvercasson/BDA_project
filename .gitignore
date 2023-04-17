@@ -3,3 +3,4 @@
 ./*py
 ./*.csv
 ./*.CSV
+__pycache__
