@@ -40,7 +40,7 @@ def query1():
     requestCommand(query,attribute)
     
     rows = cur.fetchall()
-    output = "Le departement " + inputReg + " est composé de tous ces départements --> \n"
+    output = "La région " + inputReg + " est composé de tous ces départements --> \n"
     for r in rows:
         output += r[0] + '\n'
     print(output)
