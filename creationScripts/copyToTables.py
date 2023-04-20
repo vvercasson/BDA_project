@@ -4,7 +4,6 @@ from io import StringIO
 import psycopg2
 import psycopg2.extras
 import getpass
-from connexionScript import *
 
 # FILENAMES
 communesFilename = open('newCSVFiles/new_communes.csv', 'r')
