@@ -1,5 +1,25 @@
-ALTER TABLE REGION
-ADD population_2019 float;
+CREATE TABLE DEPT_POP (
+    idDept varchar(3),
+    idStat varchar(15),
+    habitants float,
+    PRIMARY KEY(idDept, idStat),
+    constraint fk_stat
+        FOREIGN KEY(idStat)
+            REFERENCES STATS(idStat),
+    constraint fk_dept
+        FOREIGN KEY(idDept)
+            REFERENCES DEPARTEMENT(CDept)
+);
 
-ALTER TABLE DEPARTEMENT
-ADD population_2019 float;
+CREATE TABLE REG_POP (
+    idReg integer,
+    idStat varchar(15),
+    habitants float,
+    PRIMARY KEY(idReg, idStat),
+    constraint fk_stat
+        FOREIGN KEY(idStat)
+            REFERENCES STATS(idStat),
+    constraint fk_reg
+        FOREIGN KEY(idReg)
+            REFERENCES REGION(CReg)
+);

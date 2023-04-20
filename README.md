@@ -89,3 +89,9 @@ Ces deux fichiers servent a créer les procédures qui vont ajouter à nos table
 
 ## 2.3 Triggers
 
+### 2.3.1 **BLOCK_REG_DEPT.sql**
+
+Ce fichier SQL créer une fonction qui retourne une erreur lors ce qu'elle est appelé.
+
+Et on crée 2 trigger (un pour les regions un pour les départements) pour que lorsque l'on va insert, update ou delete on va venir appeler notre fonction qui renvoie une erreur et l'action ne sera pas réalisée.
+
