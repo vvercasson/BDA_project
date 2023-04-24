@@ -151,3 +151,7 @@ Cependant nous n'avons pas réussi à forcer l'utilisation d'autres algorithmes 
 ---
 
 On sait qu'une clé primaire est un Index car lorsqu'on regarde les index d'une table sur phpPgAdmin, un index est créer pour chaque table et il prends tous les attributs qui compose la clé primaire.
+
+En ajoutant des index sur les attributs habitants de DEPT_POP et REG_POP, on remarque une augmentation du temps de planning de la requête mais cependant le temps d'éxecution est plus cours. Dans notre exemple la différence n'est pas très importante mais cependant si on fait grossir la taille des tables le temps d'éxecution sera largement plus intéressant avec un index que sans.
+
+Pour ce qui est de l'exemple qui liste les communes avec moins de 5000 habitants, on observe le même comportement que l'exemple précedent. Le système prend plus de temps à planifier la requête mais gagne en temps sur l'éxecution.
