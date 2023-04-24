@@ -134,6 +134,10 @@ Ce fichier SQL créer une fonction qui retourne une erreur lors ce qu'elle est a
 
 Et on crée 2 trigger (un pour les regions un pour les départements) pour que lorsque l'on va insert, update ou delete on va venir appeler notre fonction qui renvoie une erreur et l'action ne sera pas réalisée.
 
+### 2.3.2 **UPDATE_POP_TRIGGER.sql**
+
+A faire
+
 ## 2.4 Explain
 
 ---
@@ -149,6 +153,8 @@ Cependant nous n'avons pas réussi à forcer l'utilisation d'autres algorithmes 
 ## 2.5 Index
 
 ---
+
+**Pour voir les résultats des requêtes avec explain et les index, il faut consulter le fichier SQL_Files/INDEX/index.sql**.
 
 On sait qu'une clé primaire est un Index car lorsqu'on regarde les index d'une table sur phpPgAdmin, un index est créer pour chaque table et il prends tous les attributs qui compose la clé primaire.
 
