@@ -136,7 +136,13 @@ Et on crée 2 trigger (un pour les regions un pour les départements) pour que l
 
 ### 2.3.2 **UPDATE_POP_TRIGGER.sql**
 
-A faire
+Ce fichier comprend un trigger et une fonction.
+
+Le trigger "update_population_on_statsAnnee_update", execute la fonction "refresh_pop_on_both_tables" après un UPDATE ou un INSERT dans la table STATSCOMANNEE. Il l'execute que dans le cas où on traite d'une population.
+
+La fonction "refresh_pop_on_both_tables" est la fonction qui est executée et elle permet de mettre des conditions pour l'ajout ou la modification d'une commune.
+Si pour un département, il n'y a pas toutes les populations des communes, alors l'update des départements et régions n'est pas fait.
+Dans l'autre cas, l'update est fait avec succès. 
 
 ## 2.4 Explain
 
