@@ -1,8 +1,8 @@
-drop table CLREG;
-drop table CLDEPT;
-drop table COMMUNE;
-drop table DEPARTEMENT;
-drop table REGION;
-drop table STATSCOMANNEE;
-drop table STATSCOMINTER;
-drop table STATS;
+drop table CLREG CASCADE;
+drop table CLDEPT CASCADE;
+drop table COMMUNE CASCADE;
+drop table DEPARTEMENT CASCADE;
+drop table REGION CASCADE;
+drop table STATSCOMANNEE CASCADE;
+drop table STATSCOMINTER CASCADE;
+drop table STATS CASCADE;
