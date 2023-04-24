@@ -1,11 +1,39 @@
 # Compte Rendu du projet de base de données avancées
 Réalisé par ITHURBIDE Martin et VERCASSON Victor
 
+*Voici la suite de commande à executer pour initialiser le projet (se positionner à la source du projet):*
+
+1 - éxecuter **\i SQL_Files/CREATE.sql** dans pgsql pour créer les tables (Il existe **DROP.sql** pour les supprimer)
+
+2 - éxecuter le script python de copy : **python3 creationScripts/copyToTables.py**
+
+3 - tester les requêtes : **python3 tpScripts/queries/SQLqueries.py**  (les indications sont précisés à l'éxecution)
+
+4 - pour créer les vues il faut faire **\i SQL_Files/Vues/[nom_vue]** pour chaque fichier se situant dans le dossier des Vues (Il y en a 4)
+
+5 - Pour stocker les populations de departement / region nous avons créer deux nouvelles tables, il faut donc les executer avec **\i SQL_Files/Procedures/ALTER.sql**
+
+6 - Une fois les tables crées il faut les initialiser avec **python3 SQL_Files/Procedures/initPopTables.py**
+
+7 - Maintenant les nouvelles tables remplies, on peut créer les procédures avec : **\i SQL_Files/Procedures/DEPT_POP_PROC.sql** et **\i SQL_Files/Procedures/REG_POP_PROC.sql**
+
+Lors de l'appel de ces fichier SQL, la procédure est appelée une première fois.
+
+8 - Maintenant la partie trigger, pour créer le premier trigger qui bloque les modifications il faut faire : **\i SQL_Files/Triggers/BLOCK_REG_DEPT.sql**
+
+9 - Pour finir la création de la table il manque le trigger qui met à jour la population lors de la modificaton et de l'ajout : **\i SQL_Files/Triggers/UPDATE_POP_TRIGGER.sql**
+
+La partie pratique est finie pour ce qui est de la partie d'explication de requêtes et d'index, rien n'est a éxecuter tous les résultats obtenus on étaient stockées dans les fichier respectif.
+Pour le détail des EXPLAIN voir **SQL_Files/EXPLAIN/explain.sql**.
+Et pour les index **SQL_Files/INDEX/index.sql**.
+L'analyse des résultats se trouve en bas de ce Markdown dans les parties respectives
+
 # 1. Scripts
 
 ## 1.1 Scripts de créations/manipulations de CSV
+
 ---
-*Certaines manipulation ont étés faites sur Excel avant pour retirer les colonnes totalement inutiles dans les csv de departements, communes et regions pour ce projet*
+*Certaines manipulation ont étés faites sur Excel avant pour retirer les colonnes totalement inutiles dans les csv de departements, communes et regions pour ce projet.*
 
 Les scripts ci-dessous servent à créer les fichier csv adaptés à nos tables afin que l'on puisse utiliser la commande **copy_from(...)** sur les csv crées par ces scripts.
 
@@ -14,6 +42,7 @@ Les scripts ci-dessous servent à créer les fichier csv adaptés à nos tables 
 Ce scrpit enleve toutes les communes qui ont un code différent de "COM", il s'occupe également de mettre formatter le numero de département et de commune pour que si le département est le "1" alors il se transformera en "01", le principe est le même pour le numéro de commune.
 
 ### 1.1.2 - **formatDepartementCSV.py**
+
 Ce script ignore simplement les colonnes qui nous sont inutiles pour notre la création de la table département (c'est à dire qu'on ignore pour le moment le chef lieu)
 
 ### 1.1.3 - **formatRegionCSV.py**
@@ -46,12 +75,14 @@ Ce script prend le csv crée par le script précedent et vas venir enlever toute
 Ce script sert à créer les fichiers CSV suivants : **commAnneeStat.csv** et **commInterStat.csv**. Ce script de séparer nos stats entre celles qui utilisent une année et celles qui utilisent une intervalle afin de pouvour créer nos tables : **STATSCOMANNEE** et **STATSCOMINTER**
 
 ## 1.2 Scripts d'alimentation de base de données
+
 ---
 ### 1.2.1 - **copyToTables.py**
 
 Ce scripts utiles nos les fichiers csv qui ont été crées au dessus par nos scripts de créations de CSV afin de pouvoir utiliser la fonction **copy_from(...)** de psycopg2.
 
 ## 1.3 Scripts de requêtage
+
 ---
 
 ### 1.3.1 - **SQLqueries.py**
@@ -62,6 +93,7 @@ Les requêtes sont expliqués lors de l'éxecution après s'être connecté.
 # 2. Fichiers SQL
 
 ## 2.1 Vues
+
 ---
 
 ### 2.1.1 - **POPDEPT.sql**
@@ -81,13 +113,20 @@ Dans ce fichier on crée une Vue qui renvoie toutes les stats pour chaque depart
 Même principe que **STATDEPT.sql**, on renvoie toutes les stats mais pour les regions cette fois-ci.
 
 ## 2.2 Prodécures
+
 ---
 
-### 2.2.1 **DEPT_POP_PROC.sql** et **REG_POP_PROC.sql**
+### 2.2.1 **ALTER.sql**
+
+Ce fichier sert à créer les deux tables utilisés pour stocker les population pour les régions ainsi que pour les départements.
+
+### 2.2.2 **DEPT_POP_PROC.sql** et **REG_POP_PROC.sql**
 
 Ces deux fichiers servent a créer les procédures qui vont ajouter à nos tables DEPARTEMENTS et REGION la population qu'ils avaient en 2019.
 
 ## 2.3 Triggers
+
+---
 
 ### 2.3.1 **BLOCK_REG_DEPT.sql**
 
@@ -95,3 +134,20 @@ Ce fichier SQL créer une fonction qui retourne une erreur lors ce qu'elle est a
 
 Et on crée 2 trigger (un pour les regions un pour les départements) pour que lorsque l'on va insert, update ou delete on va venir appeler notre fonction qui renvoie une erreur et l'action ne sera pas réalisée.
 
+## 2.4 Explain
+
+---
+
+**Pour voir les résultats des requêtes avec le explain, il faut consulter le fichier SQL_Files/EXPLAIN/explain.sql**.
+
+Lors de nos tests, nous avons remarquer que lorsqu'on fait une jointure entre deux tables relativement petites, le système va préferer un système de boucle imbriquée.
+
+Alors que dans tous les autres cas il préfere utiliser une jointure par hachage.
+
+Cependant nous n'avons pas réussi à forcer l'utilisation d'autres algorithmes tels que le tri fusion malgré le fait que nous avons créer des requêtes qui seraient a priori avantager par un tri fusion. Nous expliquons ça par le coût fort qu'un tri fusion peut representer sur de grandes tables.
+
+## 2.5 Index
+
+---
+
+On sait qu'une clé primaire est un Index car lorsqu'on regarde les index d'une table sur phpPgAdmin, un index est créer pour chaque table et il prends tous les attributs qui compose la clé primaire.
